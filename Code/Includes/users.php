@@ -34,4 +34,17 @@ public function create() {
     // Execute query
     return $stmt->execute();
 }
+
+//  Get Users
+public function read($limit = 10, $offset = 0) {
+    $query = "SELECT id, username, email, firstName, lastName FROM " . $this->table . " LIMIT :limit OFFSET :offset";
+    $stmt = $this->conn->prepare($query);
+    
+    // Bind limit and offset
+    $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+    $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    return $stmt;
+}
 }
