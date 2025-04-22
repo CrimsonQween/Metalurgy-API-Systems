@@ -19,11 +19,19 @@ $users->email = $data->email;
 $users->password = $data->password;
 $users->firstName = $data->lastName;
 $users->lastName = $data->lastName;
+$users->bio = $data->bio ?? '';
+$users->profile_picture = $data->profile_picture ?? '';
+$users->interests = $data->interests ?? '';
+$users->alias = $data->alias ?? '';
 
-if($users->create()){
-    echo json_encode(array("message" => "User created."));
+$result = $users->create();
+
+if ($result === true) {
+    echo json_encode(["message" => "User created."]);
+} elseif ($result === "exists") {
+    echo json_encode(["message" => "Username or email already exists."]);
 } else {
-    echo json_encode(array("message" => "User not created."));
+    echo json_encode(["message" => "User not created."]);
 }
 
 ?>

@@ -4,7 +4,7 @@
 defined("DS") ? null : define("DS", DIRECTORY_SEPARATOR);
 
 // Dynamically define the SITE_ROOT to the root of your project
-defined("SITE_ROOT") ? null : define("SITE_ROOT", __DIR__ . DS . ".."); // Going one level up to the root
+defined("SITE_ROOT") ? null : define("SITE_ROOT", __DIR__ . DS . "..");
 
 // Define paths for core and includes directories
 defined("CORE_PATH") ? null : define("CORE_PATH", SITE_ROOT . DS . "core");

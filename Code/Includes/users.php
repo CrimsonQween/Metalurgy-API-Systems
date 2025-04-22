@@ -12,6 +12,9 @@ class Users {
     public $lastName;
     public $joined_at;
     public $alias;
+    public $bio;
+    public $profile_picture;
+    public $interests;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -19,9 +22,20 @@ class Users {
 
 // Create User Endpoint
 public function create() {
-    $query = "INSERT INTO users (username, email, password, firstName, lastName) 
-            VALUES (:username, :email, :password, :first_name, :last_name)";
+// Check if username or email already exists
+    $checkQuery = "SELECT id FROM " . $this->table . " WHERE username = :username OR email = :email";
+    $checkStmt = $this->conn->prepare($checkQuery);
+    $checkStmt->bindParam(":username", $this->username);
+    $checkStmt->bindParam(":email", $this->email);
+    $checkStmt->execute();
     
+    if ($checkStmt->rowCount() > 0) {
+        return "exists";
+    }
+
+    $query = "INSERT INTO users (username, email, password, firstName, lastName, bio, profile_picture, interests, alias) 
+    VALUES (:username, :email, :password, :first_name, :last_name, :bio, :profile_picture, :interests, :alias)";
+
     $stmt = $this->conn->prepare($query);
 
     $stmt->bindParam(":username", $this->username);
@@ -29,64 +43,52 @@ public function create() {
     $stmt->bindParam(":password", $this->password);
     $stmt->bindParam(":first_name", $this->firstName);
     $stmt->bindParam(":last_name", $this->lastName);
+    $stmt->bindParam(":bio", $this->bio);
+    $stmt->bindParam(":profile_picture", $this->profile_picture);
+    $stmt->bindParam(":interests", $this->interests);
+    $stmt->bindParam(":alias", $this->alias);
 
-    return $stmt->execute();
+return $stmt->execute();
 }
 
 //  Get Users Endpoint
 public function read($limit = 10, $offset = 0) {
-    $query = "SELECT id, username, email, firstName, lastName FROM " . $this->table . " LIMIT :limit OFFSET :offset";
+    $query = "SELECT * FROM " . $this->table . " LIMIT :limit OFFSET :offset";
     $stmt = $this->conn->prepare($query);
-    
+
     $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
     $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
     $stmt->execute();
-    
+
     return $stmt;
 }
 
 // Update User Endpoint#
-public function update(){
-    $query = "UPDATE {$this->table} SET username =:username, email = :email , password = :password ,firstName = :firstName , lastName = :lastName WHERE id = :id;";
+public function update() {
+    $query = "UPDATE {$this->table} SET 
+            username = :username, email = :email, password = :password,
+            firstName = :firstName, lastName = :lastName,
+            bio = :bio, profile_picture = :profile_picture,
+            interests = :interests, alias = :alias
+            WHERE id = :id";
 
     $stmt = $this->conn->prepare($query);
-    
-    $this->id = htmlspecialchars(strip_tags($this->id));
-    $this->username = htmlspecialchars(strip_tags($this->username));
-    $this->email = htmlspecialchars(strip_tags($this->email));
-    $this->password = htmlspecialchars(strip_tags($this->password));
-    $this->firstName = htmlspecialchars(strip_tags($this->firstName));
-    $this->lastName = htmlspecialchars(strip_tags($this->lastName));
 
-    $stmt->bindParam(":id", $this->id);
-    $stmt->bindParam(":username", $this->username);
-    $stmt->bindParam(":email", $this->email);
-    $stmt->bindParam(":password", $this->password);
-    $stmt->bindParam(":firstName", $this->firstName);
-    $stmt->bindParam(":lastName", $this->lastName);
-
-    if($stmt->execute()){
-        return true;
+    foreach (['id', 'username', 'email', 'password', 'firstName', 'lastName', 'bio', 'profile_picture', 'interests', 'alias'] as $field) {
+        $this->$field = htmlspecialchars(strip_tags($this->$field));
+        $stmt->bindParam(":$field", $this->$field);
     }
-    printf("Error %s. \n", $stmt->error);
-    return false;
+
+    return $stmt->execute();
 }
 
 // Delete User Endpoint
 public function delete() {
     $query = "DELETE FROM {$this->table} WHERE id = :id";
-
     $stmt = $this->conn->prepare($query);
     $this->id = htmlspecialchars(strip_tags($this->id));
-
     $stmt->bindParam(":id", $this->id);
-
-    if($stmt->execute()){
-        return true;
-    }
-
-    printf("Error: %s. \n", $stmt->error);
-    return false;
+    return $stmt->execute();
 
 }
 }

@@ -16,6 +16,10 @@ $users->email = $data->email;
 $users->password = $data->password;
 $users->firstName = $data->firstName;
 $users->lastName = $data->lastName;
+$users->bio = $data->bio ?? '';
+$users->profile_picture = $data->profile_picture ?? '';
+$users->interests = $data->interests ?? '';
+$users->alias = $data->alias ?? '';
 
 if($users->update()){
     echo json_encode(array('message'=> 'User Updated'));
