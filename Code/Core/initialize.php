@@ -15,5 +15,5 @@ require_once(CORE_PATH . DS . "config.php");
 
 // Load other necessary classes
 require_once(INC_PATH . DS . "users.php");
-
+require_once(INC_PATH . DS . "bands.php");
 ?>
