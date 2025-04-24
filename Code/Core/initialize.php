@@ -18,6 +18,7 @@ require_once(INC_PATH . DS . "users.php");
 require_once(INC_PATH . DS . "bands.php");
 require_once(INC_PATH . DS . "albums.php");
 require_once(INC_PATH . DS . "songs.php");
-
+require_once(INC_PATH . DS . "genre.php");
+require_once(INC_PATH . DS . "subgenre.php");
 
 ?>
