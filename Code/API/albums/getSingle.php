@@ -23,7 +23,9 @@ if (isset($_GET['id'])) {
             "spotify_id" => $spotify_id,
             "release_year" => $release_year,
             "band_id" => $band_id,
-            "cover_image" => $cover_image
+            "cover_image" => $cover_image,
+            "spotify_url" => $spotify_url,
+            "track_count" => $track_count
         );
 
         echo json_encode($album_item);

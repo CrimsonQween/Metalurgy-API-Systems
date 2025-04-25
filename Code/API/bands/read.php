@@ -21,7 +21,11 @@ if ($num > 0) {
             'origin' => $origin,
             'year_formed' => $year_formed,
             'spotify_id' => $spotify_id,
-            'image_url' => $image_url
+            'image_url' => $image_url,
+            'spotify_url' => $spotify_url,
+            'followers' => $followers,
+            'popularity' => $popularity,
+            'genres' => $genres
         ];
         array_push($bands_arr, $band_item);
     }

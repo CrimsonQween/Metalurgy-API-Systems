@@ -17,12 +17,12 @@ class Bands {
 
     // CREATE
     public function create() {
-        $query = "INSERT INTO " . $this->table . " (name, origin, year_formed, spotify_id, image_url)
-                VALUES (:name, :origin, :year_formed, :spotify_id, :image_url)";
+        $query = "INSERT INTO " . $this->table . " (name, origin, year_formed, spotify_id, image_url, spotify_url, followers,popularity)
+                VALUES (:name, :origin, :year_formed, :spotify_id, :image_url, :spotify_url , :followers, :popularity)";
 
         $stmt = $this->conn->prepare($query);
 
-        foreach (['name', 'origin', 'year_formed', 'spotify_id', 'image_url'] as $field) {
+        foreach (['name', 'origin', 'year_formed', 'spotify_id', 'image_url', 'spotify_url', 'followers', 'popularity'] as $field) {
             $this->$field = htmlspecialchars(strip_tags($this->$field));
             $stmt->bindParam(":$field", $this->$field);
         }
@@ -54,12 +54,15 @@ class Bands {
                     origin = :origin,
                     year_formed = :year_formed,
                     spotify_id = :spotify_id,
-                    image_url = :image_url
+                    image_url = :image_url,
+                    spotify_url = :spotify_url,
+                    followers = :followers,
+                    popularity = :popularity
                     WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
 
-        foreach (['id', 'name', 'origin', 'year_formed', 'spotify_id', 'image_url'] as $field) {
+        foreach (['id', 'name', 'origin', 'year_formed', 'spotify_id', 'image_url', 'spotify_url', 'followers', 'popularity'] as $field) {
             $this->$field = htmlspecialchars(strip_tags($this->$field));
             $stmt->bindParam(":$field", $this->$field);
         }

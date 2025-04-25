@@ -21,7 +21,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         "duration" => $duration,
         "spotify_id" => $spotify_id,
         "album_id" => $album_id,
-        "track_number" => $track_number
+        "track_number" => $track_number,
+        "spotify_url" => $spotify_url
     ];
 }
 
