@@ -21,5 +21,7 @@ require_once(INC_PATH . DS . "songs.php");
 require_once(INC_PATH . DS . "genre.php");
 require_once(INC_PATH . DS . "subgenre.php");
 require_once(INC_PATH . DS . "auth.php");
+require_once(INC_PATH . DS . "discogs.php");
+
 
 ?>
