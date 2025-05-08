@@ -80,4 +80,31 @@ class Bands {
     }
 }
 
+// Functions to aid in Genre Linking
+
+function linkBandToGenre($db, $band_id, $genre_id) {
+    $query = "INSERT IGNORE INTO band_genres (band_id, genre_id) VALUES (:band_id, :genre_id)";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':band_id', $band_id);
+    $stmt->bindParam(':genre_id', $genre_id);
+    return $stmt->execute();
+}
+
+function linkBandToSubgenre($db, $band_id, $subgenre_id) {
+    $query = "INSERT IGNORE INTO band_genres (band_id, subgenre_id) VALUES (:band_id, :subgenre_id)";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':band_id', $band_id);
+    $stmt->bindParam(':subgenre_id', $subgenre_id);
+    return $stmt->execute();
+}
+
+function getBandIdByName($db, $name) {
+    $query = "SELECT id FROM bands WHERE name = :name LIMIT 1";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':name', $name);
+    $stmt->execute();
+    $row = $stmt->fetch();
+    return $row ? $row['id'] : null;
+}
+
 ?>

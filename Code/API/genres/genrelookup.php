@@ -1,36 +1,44 @@
 <?php
 
-include_once("../../core/initialize.php");
+include_once("../../core/initialize.php");  // Initialize DB connection
 
-$api_key_lastfm = '223fe2ea7fdb302d649ebec2a63d4f74';
-$query = $_GET['query'] ?? '';  
+$api_key = $lastfm_api_key;
 
-if (empty($query)) {
-    echo json_encode(["error" => "Missing 'query' parameter"]);
-    exit;
-}
+//Fetch all bands from your database
+$query = "SELECT id, name FROM bands";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$bands = $stmt->fetchAll();
 
-// Fetch genres from Last.fm
-$lastfm_data = fetchGenresFromLastFM($api_key_lastfm, $query);
-$musicbrainz_data = fetchGenresFromMusicBrainz($query);
+//Loop through each band
+foreach ($bands as $band) {
+    $band_id = $band['id'];
+    $band_name = $band['name'];
 
-// Save genres and subgenres to the database
-if (isset($lastfm_data['toptags']['tag']) && !empty($lastfm_data['toptags']['tag'])) {
-    foreach ($lastfm_data['toptags']['tag'] as $genre) {
-        $name = $genre['name'];
-        $description = $genre['url']; 
-        saveGenreToDatabase($db, $name, $description);
+//Fetch genres from Last.fm using artist.getTopTags
+    $data = fetchArtistGenresFromLastFM($band_name, $api_key);
+
+    if (isset($data['toptags']['tag']) && !empty($data['toptags']['tag'])) {
+        foreach ($data['toptags']['tag'] as $result) {
+            $genre_name = $result['name'] ?? null;
+
+            if ($genre_name) {
+                // Save genre if it doesn't exist
+                saveGenreToDatabase($db, $genre_name, 'Auto-fetched from Last.fm');
+
+                // Get genre ID
+                $genre_id = getGenreIdByName($db, $genre_name);
+
+                // Link genre to band
+                if ($genre_id) {
+                    linkGenreToBand($db, $band_id, $genre_id);
+                }
+            }
+        }
     }
-}
 
-if (isset($musicbrainz_data['genres']) && !empty($musicbrainz_data['genres'])) {
-    foreach ($musicbrainz_data['genres'] as $genre) {
-        $name = $genre['name'];
-        $description = $genre['id']; 
-        saveGenreToDatabase($db, $name, $description);
-    }
+    echo "Processed genres for band: {$band_name}\n";
 }
-
-echo json_encode(["message" => "Genres saved successfully."]);
 
 ?>
+

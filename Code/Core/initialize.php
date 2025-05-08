@@ -23,6 +23,4 @@ require_once(INC_PATH . DS . "subgenre.php");
 require_once(INC_PATH . DS . "auth.php");
 require_once(INC_PATH . DS . "lastfm.php");
 require_once(INC_PATH . DS . "musicbrainz.php");
-require_once(INC_PATH . DS . "genres.php");
-
 ?>
