@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "1cecfc67-f8ea-4805-a767-78d9244f8b2b",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41844275"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Lula1234\",\r\n    \"email\": \"lulaphillips@gmail.com\",\r\n    \"password\": \"weinerdogs1234\",\r\n    \"firstName\": \"Lula\",\r\n    \"lastName\": \"Phillips\",\r\n    \"bio\": \"Slipknot No1 Fan , Freelancer and Coffee Addict\",\r\n    \"profile_picture\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJaSVbvNS0IgCfc4ASVxykebVp0OBT0x8osw&s\",\r\n    \"intersts\": \"painting, metal music\",\r\n    \"alias\": \"No1Maggot\"\r\n    }\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/metalurgy-api-systems/code/api\\users\\addUser.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"metalurgy-api-systems",
+						"code",
+						"api",
+						"users",
+						"addUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/getUsers.php?page=1&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"getUsers.php"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": 18,\r\n            \"username\": \"H.Borg\",\r\n            \"email\": \"helen@gmail.com\",\r\n            \"firstName\": \"Helen\",\r\n            \"lastName\": \"Micallef\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/update.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"update.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 18\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/delete.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"delete.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"follower_id\" : 1,\r\n    \"followed_id\" : 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/followUser.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"followUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unfollow User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"follower_id\" : 1,\r\n    \"followed_id\" : 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/unfollowUser.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"unfollowUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Followers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/getFollowers.php?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"getFollowers.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Following",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/getFollowing.php?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"getFollowing.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/users/getSingleUser.php?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"users",
+						"getSingleUser.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

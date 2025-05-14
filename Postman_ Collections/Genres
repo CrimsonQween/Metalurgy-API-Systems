@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "2994ea0c-de8c-4861-82a1-bd1561df80f3",
+		"name": "Genres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41844275"
+	},
+	"item": [
+		{
+			"name": "Read Genres",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/metalurgy-api-systems/code/api\\genres\\read.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"metalurgy-api-systems",
+						"code",
+						"api",
+						"genres",
+						"read.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Genre Lookup External",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/genres/genrelookup.php?query=metal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"genres",
+						"genrelookup.php"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "metal"
+						},
+						{
+							"key": "source",
+							"value": "lastfm",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Song Genre Lookup External",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/genres/songGenreLookup.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"genres",
+						"songGenreLookup.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

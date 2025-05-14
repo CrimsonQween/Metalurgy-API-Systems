@@ -29,4 +29,4 @@ The **Metalurgy API** is a powerful RESTful service built with PHP and MySQL for
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/metalurgy-api.git
+   git clone https://github.com/CrimsonQween/Metalurgy-API-Systems

@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "c8fffa64-cb8a-4e99-a3cd-8501e886dd61",
+		"name": "Spotify External API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41844275"
+	},
+	"item": [
+		{
+			"name": "Band Lookup",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/code/api/spotify/band_lookup.php?q=megadeth&=&=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"code",
+						"api",
+						"spotify",
+						"band_lookup.php"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "megadeth"
+						},
+						{
+							"key": "",
+							"value": ""
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Band Lookup",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/Metalurgy-API-Systems/code/api/spotify/band_lookup.php?q=megadeth&=&=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Metalurgy-API-Systems",
+								"code",
+								"api",
+								"spotify",
+								"band_lookup.php"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "megadeth"
+								},
+								{
+									"key": "",
+									"value": ""
+								},
+								{
+									"key": null,
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 13 May 2025 13:06:58 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.4"
+						},
+						{
+							"key": "Content-Length",
+							"value": "359"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"Band data saved successfully!\",\"band\":{\"name\":\"Megadeth\",\"genres\":\"thrash metal, metal, heavy metal, speed metal\",\"followers\":5884881,\"popularity\":71,\"image_url\":\"https:\\/\\/i.scdn.co\\/image\\/ab6761610000e5eb3f19bad1d41dceb90d8b4cf5\",\"spotify_url\":\"https:\\/\\/open.spotify.com\\/artist\\/1Yox196W7bzVNZI7RBaPnf\",\"spotify_id\":\"1Yox196W7bzVNZI7RBaPnf\"}}"
+				}
+			]
+		},
+		{
+			"name": "Album Lookup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/spotify/album_lookup.php?band_spotify_id=1Yox196W7bzVNZI7RBaPnf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"spotify",
+						"album_lookup.php"
+					],
+					"query": [
+						{
+							"key": "band_spotify_id",
+							"value": "1Yox196W7bzVNZI7RBaPnf"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Album Lookup",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Metalurgy-API-Systems/Code/API/spotify/album_lookup.php?band_spotify_id=1Yox196W7bzVNZI7RBaPnf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Metalurgy-API-Systems",
+								"Code",
+								"API",
+								"spotify",
+								"album_lookup.php"
+							],
+							"query": [
+								{
+									"key": "band_spotify_id",
+									"value": "1Yox196W7bzVNZI7RBaPnf"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 13 May 2025 13:07:48 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.4"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3297"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Spilling Blood (Live)\",\"release_year\":\"2024\",\"spotify_id\":\"614KfXjjaQ7HOVAAIV89Sn\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b2738dc85107b172fd09fced8dc1\",\"track_count\":9,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/614KfXjjaQ7HOVAAIV89Sn\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"The Sick, The Dying\\u2026 And The Dead!\",\"release_year\":\"2022\",\"spotify_id\":\"1ziUtOuRT545OI4cnHEMhC\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b27362c843dbee54435efe80987f\",\"track_count\":14,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/1ziUtOuRT545OI4cnHEMhC\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"That One Night: Live In Buenos Aires\",\"release_year\":\"2021\",\"spotify_id\":\"3ALthL9fEWggZRgRklZeEf\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b2731d6ed55460b97eb18bcdd3e8\",\"track_count\":21,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/3ALthL9fEWggZRgRklZeEf\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Unplugged in Boston (Live 2001)\",\"release_year\":\"2021\",\"spotify_id\":\"48lh8DY2GOeVtEbLHPVyod\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b27326b870390bac4a9084bf38f3\",\"track_count\":10,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/48lh8DY2GOeVtEbLHPVyod\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Warheads On Foreheads\",\"release_year\":\"2019\",\"spotify_id\":\"58p5IFT7CEcMHSrAIuO5DJ\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b273b273106fbf562e1131ccc790\",\"track_count\":35,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/58p5IFT7CEcMHSrAIuO5DJ\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Killing Is My Business...And Business Is Good - The Final Kill\",\"release_year\":\"2018\",\"spotify_id\":\"1fQP14KigA58xjlYNf4Uac\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b27372621d5c46ae77b62d5b56e8\",\"track_count\":18,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/1fQP14KigA58xjlYNf4Uac\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Dystopia\",\"release_year\":\"2016\",\"spotify_id\":\"4sP7CAPrmdBD1ojBBrPxiV\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b273db38819ff1e73809f8be6107\",\"track_count\":12,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/4sP7CAPrmdBD1ojBBrPxiV\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Super Collider (Commentary)\",\"release_year\":\"2013\",\"spotify_id\":\"5MWip84FEFaGFhSnozRXXY\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b273802b6c6595028a358d291ec9\",\"track_count\":11,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/5MWip84FEFaGFhSnozRXXY\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Super Collider\",\"release_year\":\"2013\",\"spotify_id\":\"4SG1HFhXihESspVTyKYl5j\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b273872b0074ecb6b93ff5676093\",\"track_count\":11,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/4SG1HFhXihESspVTyKYl5j\"}}{\"message\":\"Album data saved successfully!\",\"album\":{\"title\":\"Countdown To Extinction: Live\",\"release_year\":\"2013\",\"spotify_id\":\"0vf3fKamMi3yfjApyZaAE1\",\"cover_image\":\"https:\\/\\/i.scdn.co\\/image\\/ab67616d0000b273540abdecd854415dc18961b2\",\"track_count\":17,\"spotify_url\":\"https:\\/\\/open.spotify.com\\/album\\/0vf3fKamMi3yfjApyZaAE1\"}}"
+				}
+			]
+		},
+		{
+			"name": "Songs Lookup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/Metalurgy-API-Systems/Code/API/spotify/songs_lookup.php?album_spotify_id=614KfXjjaQ7HOVAAIV89Sn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"Metalurgy-API-Systems",
+						"Code",
+						"API",
+						"spotify",
+						"songs_lookup.php"
+					],
+					"query": [
+						{
+							"key": "album_spotify_id",
+							"value": "614KfXjjaQ7HOVAAIV89Sn"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Songs Lookup",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Metalurgy-API-Systems/Code/API/spotify/songs_lookup.php?album_spotify_id=614KfXjjaQ7HOVAAIV89Sn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Metalurgy-API-Systems",
+								"Code",
+								"API",
+								"spotify",
+								"songs_lookup.php"
+							],
+							"query": [
+								{
+									"key": "album_spotify_id",
+									"value": "614KfXjjaQ7HOVAAIV89Sn"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 13 May 2025 13:08:26 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.4"
+						},
+						{
+							"key": "Content-Length",
+							"value": "332"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100"
+						},
+						{
+							"key": "Connection",
+							"value": "Keep-Alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"Tracks saved\",\"saved_tracks\":[\"Holy Wars...The Punishment Due - Live 1994\",\"Reckoning Day - Live 1994\",\"Sweating Bullets - Live 1994\",\"Train Of Consequences - Live 1994\",\"In My Darkest Hour - Live 1994\",\"A Tout Le Monde - Live 1994\",\"Symphony Of Destruction - Live 1994\",\"Peace Sells - Live 1994\",\"Victory - Live 1994\"]}"
+				}
+			]
+		}
+	]
+}
