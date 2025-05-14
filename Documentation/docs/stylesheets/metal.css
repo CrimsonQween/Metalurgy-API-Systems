@@ -1,0 +1,26 @@
+:root {
+    --md-primary-fg-color: #0a0a0a;
+    --md-accent-fg-color: #673ab7;
+    --md-typeset-color: #e0e0e0;
+    --md-default-bg-color: #121212;
+    --md-footer-bg-color: #000000;
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.md-typeset a {
+    color: #9f6fff;
+}
+
+.md-header {
+    background: #0d0d0d !important;
+}
+
+body {
+    background: #121212;
+}

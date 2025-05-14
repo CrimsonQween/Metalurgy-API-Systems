@@ -1,1 +1,25 @@
-site_name: My Docs
+site_name: Metalurgy API
+theme:
+  name: material
+  palette:
+    primary: black
+    accent: deep purple
+  font:
+    text: Roboto Mono
+    code: JetBrains Mono
+extra_css:
+  - stylesheets/metal.css
+nav:
+  - Home: index.md
+  - Users: users.md
+  - Bands: bands.md
+  - Albums: albums.md
+  - Genres: genres.md
+  - Songs: songs.md
+  - External APIs: external.md
+  - Testing: testing.md
+  - Testing Instructions: testing_instructions.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
