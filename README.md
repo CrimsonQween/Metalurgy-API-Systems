@@ -1,21 +1,21 @@
-# 🎸 Metalurgy API
+#  Metalurgy API
 
 The **Metalurgy API** is a powerful RESTful service built with PHP and MySQL for discovering and organizing metal music. It allows you to manage users, bands, albums, songs, genres, and includes integrations with Spotify and Last.fm/MusicBrainz to enrich your data with external metadata.
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🔐 User Management (CRUD, Follow/Unfollow)
-- 🎤 Band Catalog (with genre attachment and search/filter)
-- 💿 Album Collection (by band, year, Spotify ID)
-- 🎵 Songs (with duration, album/track links, genre tagging)
-- 🏷️ Genre & Subgenre linking
-- 🌐 External API Integration (Spotify, Last.fm, MusicBrainz)
+- User Management (CRUD, Follow/Unfollow)
+- Band Catalog (with genre attachment and search/filter)
+- Album Collection (by band, year, Spotify ID)
+- Songs (with duration, album/track links, genre tagging)
+- Genre & Subgenre linking
+- External API Integration (Spotify, Last.fm, MusicBrainz)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend:** PHP (vanilla, REST style)
 - **Database:** MySQL
@@ -25,7 +25,7 @@ The **Metalurgy API** is a powerful RESTful service built with PHP and MySQL for
 
 ---
 
-## 📦 Installation
+## Installation
 
 1. Clone this repository:
    ```bash
