@@ -4,8 +4,20 @@ include_once("../../Core/initialize.php");
 
 // Function to save band info to the database
 function saveBandToDatabase($db, $name, $genres, $followers, $popularity, $image_url, $spotify_url, $spotify_id) {
+    // First, check if the band already exists by Spotify ID
+    $checkQuery = "SELECT id FROM bands WHERE spotify_id = :spotify_id";
+    $checkStmt = $db->prepare($checkQuery);
+    $checkStmt->bindParam(":spotify_id", $spotify_id);
+    $checkStmt->execute();
+
+    if ($checkStmt->rowCount() > 0) {
+        // Band already exists
+        return "exists";
+    }
+
+    // If not exists, insert new record
     $query = "INSERT INTO bands (name, genres, followers, popularity, image_url, spotify_url, spotify_id) 
-            VALUES (:name, :genres, :followers, :popularity, :image_url, :spotify_url, :spotify_id)";
+              VALUES (:name, :genres, :followers, :popularity, :image_url, :spotify_url, :spotify_id)";
     
     $stmt = $db->prepare($query);
 
@@ -18,8 +30,7 @@ function saveBandToDatabase($db, $name, $genres, $followers, $popularity, $image
     $stmt->bindParam(":spotify_url", $spotify_url);
     $stmt->bindParam(":spotify_id", $spotify_id);
 
-    // Execute the statement and return the result
-    return $stmt->execute();
+    return $stmt->execute() ? "inserted" : false;
 }
 
 $client_id = "86219762966343f7a26927cf1a126d81";
@@ -62,12 +73,14 @@ if (isset($data['artists']['items'][0])) {
     $genres = implode(", ", $artist['genres']); // Convert genres array to a string
     $followers = $artist['followers']['total'];
     $popularity = $artist['popularity'];
-    $image_url = $artist['images'][0]['url']; // Using the highest resolution image
-    $spotify_url = $artist['external_urls']['spotify']; // Link to Spotify
-    $spotify_id = $artist['id'];  // Spotify artist ID
+    $image_url = $artist['images'][0]['url'] ?? ''; // Check if image exists
+    $spotify_url = $artist['external_urls']['spotify'];
+    $spotify_id = $artist['id'];
 
     // Save to database
-    if (saveBandToDatabase($db, $artist_name, $genres, $followers, $popularity, $image_url, $spotify_url, $spotify_id)) {
+    $result = saveBandToDatabase($db, $artist_name, $genres, $followers, $popularity, $image_url, $spotify_url, $spotify_id);
+
+    if ($result === "inserted") {
         echo json_encode([
             'message' => 'Band data saved successfully!',
             'band' => [
@@ -80,10 +93,13 @@ if (isset($data['artists']['items'][0])) {
                 'spotify_id' => $spotify_id
             ]
         ]);
+    } elseif ($result === "exists") {
+        echo json_encode(['message' => 'Band already exists in the database.']);
     } else {
         echo json_encode(['error' => 'Failed to save band data to database']);
     }
 } else {
     echo json_encode(["error" => "Artist not found"]);
 }
+
 ?>
